@@ -17,3 +17,53 @@ WHERE  type="table";
 
 ## サーバーにアクセスする
 Flask サーバーを起動して `http://127.0.0.1:5000/graphql` にアクセスする
+
+## PlayGround 上でクエリを実行してみる
+**すべての投稿を取得する**
+```graphql
+query AllPosts {
+  listPosts {
+    success
+    errors
+    posts {
+      id
+      title 
+      description
+      created_at
+    }
+  }
+}
+```
+
+**指定した ID の投稿を取得する**
+```graphql
+query GetPost {
+  getPost(id: "1") {
+    post {
+      id
+      title
+      description
+    }
+    success
+    errors
+  }
+}
+```
+
+**新しい投稿を追加する**
+```graphql
+mutation CreateNewPost {
+  createPost(
+    title: "New Post", 
+    description:"This is a new post !!") {
+    post {
+      id
+      title
+      description
+      created_at
+    }
+    success
+    errors
+  }
+}
+```
