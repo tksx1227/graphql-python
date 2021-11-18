@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="test_sqlite" uuid="35378a1a-5856-4bd6-83dd-0df36765c7bd">
+    <data-source source="LOCAL" name="SQLite - sqlite.db" uuid="ac93a3e9-e772-492c-b19a-edbbac93f8e9">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\coop\IdeaProjects\graphql-python\api\test_sqlite.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/database/sqlite.db</jdbc-url>
     </data-source>
   </component>
 </project>
