@@ -36,3 +36,27 @@ def create_post_resolver(obj, info, title, description):
         "payload": payload
     })
     return payload
+
+
+@convert_kwargs_to_snake_case
+def update_post_resolver(obj, info, id, title, description):
+    try:
+        post = Post.query.get(id)
+        if post:
+            post.title = title
+            post.description = description
+        db.session.add(post)
+        db.session.commit()
+        payload = {
+            "success": True,
+            "post": post.to_dict()
+        }
+    except AttributeError:
+        payload = {
+            "success": False,
+            "errors": [f"item matching id {id} not found"]
+        }
+    logger.debug({
+        "payload": payload
+    })
+    return payload

@@ -5,7 +5,7 @@ from flask import request, jsonify
 
 from api import app, db
 from api.queries import listPosts_resolver, getPost_resolver
-from api.mutations import create_post_resolver
+from api.mutations import create_post_resolver, update_post_resolver
 
 
 query = ObjectType("Query")
@@ -14,6 +14,7 @@ query.set_field("getPost", getPost_resolver)
 
 mutation = ObjectType("Mutation")
 mutation.set_field("createPost", create_post_resolver)
+mutation.set_field("updatePost", update_post_resolver)
 
 type_defs = load_schema_from_path("graphql/schema.graphql")
 schema = make_executable_schema(
