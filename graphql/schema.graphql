@@ -7,7 +7,7 @@ type Mutation {
     createPost(
         title: String!
         description: String!
-        created_at: String!
+        created_at: String
     ): PostResult!
 }
 

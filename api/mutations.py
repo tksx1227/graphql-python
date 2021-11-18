@@ -17,7 +17,7 @@ def create_post_resolver(obj, info, title, description):
         post = Post(
             title=title,
             description=description,
-            created_at=today.strftime("%b-%d-%Y")
+            created_at=today.date()
         )
         db.session.add(post)
         db.session.commit()
