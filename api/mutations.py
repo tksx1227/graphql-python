@@ -25,7 +25,7 @@ def create_post_resolver(obj, info, title, description):
             "success": True,
             "post": post.to_dict()
         }
-    except ValueError:
+    except Exception:
         payload = {
             "success": False,
             "errors": [
@@ -43,9 +43,8 @@ def create_post_resolver(obj, info, title, description):
 def update_post_resolver(obj, info, id, title, description):
     try:
         post = Post.query.get(id)
-        if post:
-            post.title = title
-            post.description = description
+        post.title = title
+        post.description = description
         db.session.add(post)
         db.session.commit()
         payload = {
