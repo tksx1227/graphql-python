@@ -4,11 +4,15 @@ from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
 
 from api import app, db
+from api.queries import listPosts_resolver
 
+
+query = ObjectType("Query")
+query.set_field("listPosts", listPosts_resolver)
 
 type_defs = load_schema_from_path("graphql/schema.graphql")
 schema = make_executable_schema(
-    type_defs, snake_case_fallback_resolvers
+    type_defs, query, snake_case_fallback_resolvers
 )
 
 
@@ -31,4 +35,4 @@ def graphql_server():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="127.0.0.1", port=5000, debug=True)
