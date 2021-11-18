@@ -67,3 +67,37 @@ mutation CreateNewPost {
   }
 }
 ```
+
+**投稿を更新する**
+```graphql
+mutation UpdatePost {
+  updatePost(
+    id: "2",
+    title: "New title !!",
+    description: "This post was updated..."
+  ) {
+    post {
+      id
+      title
+      description
+    }
+    success
+    errors
+  }
+}
+```
+
+**投稿を削除する**
+```graphql
+mutation DeletePost{
+  deletePost(id: "2") {
+    post{
+      id
+      title
+      description
+    }
+    success
+    errors
+  }
+}
+```
