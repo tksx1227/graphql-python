@@ -62,3 +62,25 @@ def update_post_resolver(obj, info, id, title, description):
         "payload": payload
     })
     return payload
+
+
+@convert_kwargs_to_snake_case
+def delete_post_resolver(obj, info, id):
+    try:
+        post = Post.query.get(id)
+        db.session.delete(post)
+        db.session.commit()
+        payload = {
+            "success": True,
+            "post": post.to_dict()
+        }
+    except Exception:
+        payload = {
+            "success": False,
+            "errors": ["Not found"]
+        }
+    logger.debug({
+        "type": "delete",
+        "payload": payload
+    })
+    return payload
