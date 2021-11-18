@@ -4,11 +4,12 @@ from ariadne.constants import PLAYGROUND_HTML
 from flask import request, jsonify
 
 from api import app, db
-from api.queries import listPosts_resolver
+from api.queries import listPosts_resolver, getPost_resolver
 
 
 query = ObjectType("Query")
 query.set_field("listPosts", listPosts_resolver)
+query.set_field("getPost", getPost_resolver)
 
 type_defs = load_schema_from_path("graphql/schema.graphql")
 schema = make_executable_schema(
