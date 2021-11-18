@@ -33,6 +33,7 @@ def create_post_resolver(obj, info, title, description):
             ]
         }
     logger.debug({
+        "type": "create",
         "payload": payload
     })
     return payload
@@ -57,6 +58,7 @@ def update_post_resolver(obj, info, id, title, description):
             "errors": [f"item matching id {id} not found"]
         }
     logger.debug({
+        "type": "update",
         "payload": payload
     })
     return payload

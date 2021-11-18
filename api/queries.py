@@ -21,6 +21,7 @@ def listPosts_resolver(obj, info):
             "errors": [str(error)]
         }
     logger.info({
+        "type": "getAll",
         "payload": payload
     })
     return payload
@@ -40,6 +41,7 @@ def getPost_resolver(obj, info, id):
             "errors": [f"Post item matching {id} not found"]
         }
     logger.debug({
+        "type": "get",
         "payload": payload
     })
     return payload
